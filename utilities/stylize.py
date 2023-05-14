@@ -215,7 +215,7 @@ def optimize_image_output(style_pyramid, c_pyr, content_im, style_im, target_fea
     '''
     # Initialize opt variables and opt       
     image_output = syn_pyr(style_pyramid[scl:])
-    output_variables = [Variable(li.data, required=True) for li in style_pyramid[scl:]]
+    output_variables = [Variable(li.data) for li in style_pyramid[scl:]]
     opt = torch.optim.Adam(output_variables, lr=lr)
 
     # Original features uses all layers, but dropping conv5 block  speeds up 
